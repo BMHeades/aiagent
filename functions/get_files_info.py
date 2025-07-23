@@ -6,12 +6,13 @@ def get_files_info(working_directory, directory="."):
     abs_path = os.path.abspath(os.path.join(working_directory, directory))
 
     # keep LLM within limits
-    if working_directory_abs not in abs_path:
+    if not abs_path.startswith(working_directory_abs):
         return f'Error: Cannot list "{directory}" as it is outside the permitted working directory'
 
     # if not a dir
     if not os.path.isdir(abs_path):
         return f'Error: "{directory}" is not a directory'
+        
     try:
 
         contents_info = ""

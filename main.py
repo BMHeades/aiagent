@@ -12,7 +12,8 @@ api_key = os.environ.get("GEMINI_API_KEY")
 from google import genai
 from google.genai import types # types like messages
 
-
+# config / settings
+# from config import *
 
 
 def main():
