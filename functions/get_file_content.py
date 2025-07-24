@@ -15,8 +15,8 @@ def get_file_content(working_directory, file_path):
 
     try:
         text = get_text(abs_path)
-        if len(text) > CHAR_LIMIT:
-            text = f'{text[:CHAR_LIMIT]}\n[...File "{file_path}" truncated at 10000 characters]'
+        if len(text) >= CHAR_LIMIT:
+            text += f'\n[...File "{file_path}" truncated at 10000 characters]'
 
         return text
 
@@ -26,4 +26,4 @@ def get_file_content(working_directory, file_path):
 
 def get_text(path):
     with open(path) as f:
-        return f.read()
+        return f.read(CHAR_LIMIT)
